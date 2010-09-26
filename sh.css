@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.xmltag{color:#00f}
+.xmlattribute{color:#909}
+.xmlstring{color:#f00}
+.xmldoctype{color:#990}
+.xmlcomment{color:#999}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <title>Vanade - News</title>
+ <subtitle></subtitle>
+ <link href="http://vanade.ayotli.com/news.xml" rel="self" type="application/atom+xml" />
+ <link href="http://vanade.ayotli.com/" />
+ <updated>2010-08-23T00:00:00Z</updated>
+ <author>
+   <name>Ayotli Webdesign</name>
+   <email>noreply@ayotli.com</email>
+ </author>
+ <id>tag:vanade.ayotli.com,2010-08-19:000</id>
+
+ <entry>
+   <title>News Feed Changed</title>
+   <link href="http://vanade.ayotli.com"/>
+   <id>tag:vanade.ayotli.com,2010-09-08:000</id>
+   <updated>2010-09-08T00:00:00Z</updated>
+   <summary type="html">Visit now &lt;a href="http://vanadetrack.blogspot.com">Vanade Track Blog&lt;a> to stay notified about news concerning the Vanade XHTML Web Editor Online.</summary>
+ </entry>
+
+ <entry>
+   <title>Version 0.02 alpha released</title>
+   <link href="http://vanade.ayotli.com"/>
+   <id>tag:vanade.ayotli.com,2010-08-23:000</id>
+   <updated>2010-08-23T00:00:00Z</updated>
+   <summary type="html">New version includes correction to the display menu, about and to-do.</summary>
+ </entry>
+ 
+ <entry>
+   <title>Version 0.01 alpha released</title>
+   <link href="http://vanade.ayotli.com"/>
+   <id>tag:vanade.ayotli.com,2010-08-19:000</id>
+   <updated>2010-08-19T00:00:00Z</updated>
+   <summary type="html">Vanade preview releases for public. Real-time editor and basic highlighter are the begining features.</summary>
+ </entry>
+</feed>

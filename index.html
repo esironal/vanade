@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<title>Vanade: XHTML Web Editor Online</title>
+<meta name="author" content="Ayotli.com" />
+<meta name="description" content="Vanade XHTML Web Editor Online: Make your webpages from your favourite browser." />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="sh.css" type="text/css" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="alternate" type="application/atom+xml" title="Vanade Track" href="http://vanadetrack.blogspot.com/feeds/posts/default" />
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="sh.js"></script>
+</head>
+
+<body onload="init()" onbeforeunload="return 'Are you sure you want to quit? Unsaved changes might be lost.';">
+<img src="icon128.png" alt="[Vanade Logo]" id="logo" /><h1>&lt;Vanade /> XHTML Web Editor Online</h1>
+
+<div id="editor"><div id="visual"></div>
+<!--contenteditable="true"-->
+<textarea id="code" wrap="hard" spellcheck="false" onblur="savePreview()"></textarea></div>
+<div id="preview" ><iframe id="previewframe">iFrames not supported</iframe></div>
+
+<form action="download.php" method="post" id="hiddenForm"><input type="hidden" name="hiddenInput" id="hiddenInput" /></form>
+
+<div id="menubar">
+<ul>
+<li>File
+ <ul>
+ <li>Open</li>
+ <li><a onclick="saveFile()">Save</a></li>
+ <li><a onclick="window.close()">Close</a></li>
+ </ul></li>
+<li>Edit
+ <ul>
+ <li>Undo</li>
+ <li>Redo</li>
+ </ul></li>
+<li>Insert
+ <ul>
+ <li>Divisor</li>
+ <li>Header 1</li>
+ <li>Paragraph</li>
+ </ul></li>
+<li>Help
+ <ul>
+ <li><a onclick="display('about')">About</a></li>
+ <li><a onclick="display('todo')">TO DO</a></li>
+ <li><a href="http://vanadetrack.blogspot.com">Track (Blog)</a></li>
+ </ul></li>
+</ul>
+</div>
+
+<div id="statusbar">
+<ul>
+<li onclick="showCode()">Code</li>
+<li onclick="showSplit()">Split</li>
+<li onclick="showPreview()">Preview</li>
+</ul>
+</div>
+
+<div id="blackarea" onclick="display('none')"></div>
+
+<div id="about">
+<h2>About</h2>
+<p>Vanade (From vanadium, the chemical element with atomic number 23), is a project to make the first XHTML web editor online. The goal is to make a lightweight stable application that helps webdevelopers to make their webpages, always aviable from anywhere, without having to install anything into their computers.</p>
+<p>Feel free to collaborate with the proyect. Contact the project developer at buzon&#64;ayotli.com</p>
+</div>
+
+<div id="todo">
+<h2>TO DO</h2>
+<h3>Phase 1 (Priority)</h3>
+<ul>
+<li>Real-time XHTML code editor: <strong>100%</strong></li>
+<li>Save files into the computer: <strong>100%</strong></li>
+<li>Syntax coloring: <strong>10%</strong></li>
+<li>Multilanguage support: <strong>0%</strong></li>
+<li>Show options when writing "<": <strong>0%</strong></li>
+<li>Show attributes when writing " " inside a tag: <strong>0%</strong></li>
+<li>Show obligatory attributes at the begining of the list with bold: <strong>0%</strong></li>
+</ul>
+
+<h3>Phase 2 (Secondary)</h3>
+<ul>
+<li>Open local files from the computer: <strong>0%</strong></li>
+<li>Interact with local files inside the same folder: <strong>0%</strong></li>
+<li>CSS editor and syntax coloring: <strong>0%</strong></li>
+</ul>
+
+<h3>Phase 3 (Minor importanse)</h3>
+<ul>
+<li>Insert menu acording file type: <strong>0%</strong></li>
+<li>Real-time SVG code editor: <strong>0%</strong></li>
+</ul>
+</div>
+
+</body>
+</html>
