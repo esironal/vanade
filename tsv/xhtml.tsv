@@ -1,0 +1,94 @@
+tag	name	type	omitag	desc	example
+!DOCTYPE	Document Type	Document	0	Instruction to the web browser about what version of the markup language the page is written in. It  should be the very first thing in an HTML document, before the <html> tag.	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+html	HTML	Document	0	The root element. It tells the browser that this is an HTML document. It is the outermost element in HTML and XHTML documents	<html>\n<head>\n<title>My Webpage</title>\n</head>\n\n<body>\n<p>This is my webpage.</p>\n</body>\n</html>
+head	Head	Document	0	A container for all the head elements. Elements inside can include scripts, instruct the browser where to find style sheets, provide meta information, and more. The <title> tag is the only required element in the head section.	<head>\n<title>My Webpage</title>\n</head>
+title	Title	Document	0	Defines the title of the document.	<title>My Webpage</title>
+body	Body	Document	0	Defines the document's body. Contains all the contents of an HTML document, such as text, hyperlinks, images, tables, lists, etc.	<body>\n<p>This is my webpage.</p>\n</body>
+!--comment--	Comment	Document	0	Used to insert a comment in the source code. Will be ignored by the browser.	<!-- This is a comment -->
+base	Base	Metainfo	1	Specifies a default address or a default target for all links on a page.	<base href="http://example.com" target="_blank" />
+link	Link	Metainfo	1		
+meta	Meta Information	Metainfo	1		
+style	Style	Stylesheets	0		
+h1	Header 1	Structure	0		
+h2	Header 2	Structure	0		
+h3	Header 3	Structure	0		
+h4	Header 4	Structure	0		
+h5	Header 5	Structure	0		
+h6	Header 6	Structure	0		
+p	Paragraph	Structure	0		
+blockquote	Blockquote	Structure	0	Defines a long quotation.	<blockquote>\n<p>Here is a long quotation, here is a long quotation</p>\n</blockquote>
+pre	Preformated	Structure	0		
+address	Address	Structure	0	Defines the contact information for the author or owner of a document. This way, the reader is able to contact the document's owner.	<address>\nWritten by John Smith<br />\n<a href="mailto:me@example.com">Email me</a><br />\nAddress: Box 123, Myzone<br />\nPhone: +12 34 56 78\n</address>
+div	Divisor	Structure	0		
+iframe	Inline Frame	Structure	0		
+em	Emphasized	Text	0		
+strong	Strong Emphasized	Text	0		
+sub	Subscript	Text	0		
+sup	Superscript	Text	0		
+cite	Cite	Text	0		
+q	Quote	Text	0		
+abbr	Abbreviation	Text	0	Describes an abbreviated phrase.\nBy marking up abbreviations you can give useful information to browsers, spellcheckers, screen readers, translation systems and search-engines using attribute title.	<abbr title="Doctor of Philosophy">Ph.D.</abbr>
+acronym	Acronym	Text	0	Describes an acronym.\nBy marking up acronyms you can give useful information to browsers, spellcheckers, screen readers, translation systems and search-engines using attribute title.	<acronym title="as soon as possible">ASAP</acronym>
+dfn	Definition	Text	0		
+del	Deletion	Text	0		
+ins	Insertion	Text	0		
+bdo	Bi-directional Override	Text	0	Allows to specify the text direction and override the bidirectional algorithm.	<bdo dir="rtl">Here is some Hebrew text!</bdo>
+var	Variable	Text	0		
+code	Code	Text	0		
+kbd	Keyboard	Text	0		
+samp	Sample Computer Code	Text	0		
+br	Break	Text	1		
+span	Spam	Text	0		
+a	Anchor	Hypertext	0	Defines an anchor. Can be used in two ways:\na) To create a link to another document, by using the href attribute.\nb) To create a bookmark inside a document, by using the id attribute.	<a href="example.com">Go to example.com</a>
+dl	Definition List	List	0		
+dt	Definition Term	List	0		
+dd	Definition Data	List	0		
+ol	Ordered List	List	0		
+ul	Unordered List	List	0		
+li	List	List	0		
+object	Object	Objects & Images	0		
+param	Parameter	Objects & Images	1		
+img	Image	Objects & Images	1	Embeds an image in an HTML page.\nRequires attributes src & alt.	<img src="solarsystem.png" alt="The Solar System" />
+map	Map	Objects & Images	0		
+area	Area	Objects & Images	1	Defines an area inside an image-map (an image-map is an image with clickable areas). The area element is always nested inside a <map> tag. Requires attribute alt.	<area shape="circle" coords="50,50,20" href="earth.html" alt="The Earth" />
+table	Table	Tables	0		
+caption	Caption	Tables	0		
+col	Columns	Tables	1		
+colgroup	Columns Group	Tables	0		
+thead	Table Head	Tables	0		
+tfoot	Table Foot	Tables	0		
+tbody	Table Body	Tables	0		
+tr	Table Row	Tables	0		
+thead	Table Header Cell	Tables	0		
+td	Table Data Cell	Tables	0		
+form	Form	Forms	0		
+input	Input	Forms	1		
+textarea	Text Area	Forms	0		
+select	Select	Forms	0		
+option	Option	Forms	0		
+optgroup	Option Group	Forms	0		
+button	Button	Forms	1		
+label	Label	Forms	0		
+fieldset	Field Set	Forms	0		
+legend	Legend	Forms	0		
+script	Script	Scripts	0		
+noscript	No Script	Scripts	0		
+b	Bold	Format	0	Defines bold text.	<b>Bold</b>
+i	Italic	Format	0	Defines italic text.	<i>Italic</i>
+tt	Teletype	Format	0	Defines teletype text.	<tt>Teletype</tt>
+big	Big	Format	0	Defines big text.	<big>Big</big>
+small	Small	Format	0	Defines small text.	<small>Small</small>
+hr	Horizontal Rule	Format	1	Defines a horizontal line.	<hr />
+frame	Frame	Frames	1		
+frameset	Frame Set	Frames	0		
+noframes	No Frames	Frames	0		
+applet	Applet	Deprecated	0	Deprecated. Use <object> instead	
+basefont	Base Font	Deprecated	1	Deprecated. Use <style> instead	
+center	Center	Deprecated	0	Deprecated. Use {text-align} or {margin} style instead	
+dir	Directory	Deprecated	0	Deprecated. Use <ul> instead	
+font	Font	Deprecated	0	Deprecated. Use {font} style instead	
+isindex	Is Index	Deprecated	0	Deprecated. Use <form> instead	
+menu	Menu	Deprecated	0	Deprecated. Use <ul> instead	
+s	Strike	Deprecated	0	Deprecated. Use {text-decoration} style instead	
+strike	Strike	Deprecated	0	Deprecated. Use {text-decoration} style instead	
+u	Underline	Deprecated	0	Deprecated. Use {text-decoration} style instead	

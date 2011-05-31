@@ -1,53 +1,60 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-<title>Vanade: XHTML Web Editor Online</title>
-<meta name="author" content="Ayotli.com" />
-<meta name="description" content="Vanade XHTML Web Editor Online: Make your webpages from your favourite browser." />
-<link rel="stylesheet" href="style.css" type="text/css" />
-<link rel="stylesheet" href="sh.css" type="text/css" />
+<meta charset="UTF-8">
+<!--[if lte IE 8]><meta http-equiv="X-UA-Compatible" content="chrome=1" /><![endif]-->
+<title>&lt;Vanade /> XHTML Web Editor Online</title>
+<meta name="description" content="&lt;Vanade /> Web Editor Online: Edit your HTML5, XHTML, CSS, JavaScript, and PHP webpages from your favourite browser." />
+<style type="text/css" />#container, #tabs, #filebrowser, #menubar, #statusbar{display:none}</style>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="alternate" type="application/atom+xml" title="Vanade Track" href="http://vanadetrack.blogspot.com/feeds/posts/default" />
-<script type="text/javascript" src="script.js"></script>
-<script type="text/javascript" src="sh.js"></script>
+<!--script type="text/javascript" src="analytics.js"></script-->
+<script type="text/javascript" src="js/preload.js"></script>
 </head>
 
-<body onload="init()" onbeforeunload="return 'Are you sure you want to quit? Unsaved changes might be lost.';">
-<img src="icon128.png" alt="[Vanade Logo]" id="logo" /><h1>&lt;Vanade /> XHTML Web Editor Online</h1>
+<body onload="preload()" onbeforeunload="saveLocalStorage()">
+<h1>&lt;Vanade /> XHTML Web Editor Online</h1>
+<noscript><p>Javascript is required to use this Webapp.</p></noscript>
 
-<div id="editor"><div id="visual"></div>
-<!--contenteditable="true"-->
-<textarea id="code" wrap="hard" spellcheck="false" onblur="savePreview()"></textarea></div>
+<ul id="tabs"></ul>
+
+<div id="container">
 <div id="preview" ><iframe id="previewframe">iFrames not supported</iframe></div>
+<div id="editor"><textarea id="code" wrap="hard" spellcheck="false"></textarea></div>
+</div>
 
-<form action="download.php" method="post" id="hiddenForm"><input type="hidden" name="hiddenInput" id="hiddenInput" /></form>
+<form action="php/download.php" method="post" id="hiddenForm"><input type="hidden" name="filename" id="hia" /><input type="hidden" name="filetype" id="hib" /><input type="hidden" name="filecode" id="hic" /></form>
+
+<div id="filebrowser"></div>
 
 <div id="menubar">
 <ul>
 <li>File
  <ul>
- <li>Open</li>
- <li><a onclick="saveFile()">Save</a></li>
+ <li><a onclick="display('newfile')">New</a></li>
+ <li><a onclick="display('openfile')">Open</a></li>
+ <li><a onclick="display('templates')">Templates</a></li>
+ <li class="sep"><a onclick="saveLocalStorage()">Save</a></li>
+ <li><a onclick="downloadFile()">Download</a></li>
+ <li class="sep"><a onclick="display('filedata')">Properties</a></li>
  <li><a onclick="window.close()">Close</a></li>
  </ul></li>
 <li>Edit
  <ul>
- <li>Undo</li>
- <li>Redo</li>
+ <li><a onclick="visualHS.undo()">Undo</a></li>
+ <li><a onclick="visualHS.redo()">Redo</a></li>
+ <li class="sep"><a onclick="display('options')">Preferences</a></li>
  </ul></li>
 <li>Insert
- <ul>
- <li>Divisor</li>
- <li>Header 1</li>
- <li>Paragraph</li>
+ <ul id="menuinsert">
+ <li><a onclick="insertComment()">Comment</a></li>
  </ul></li>
 <li>Help
  <ul>
+ <li><a onclick="display('splash')">Splash</a></li>
  <li><a onclick="display('about')">About</a></li>
  <li><a onclick="display('todo')">TO DO</a></li>
- <li><a href="http://vanadetrack.blogspot.com">Track (Blog)</a></li>
+ <li><a href="http://vanadetrack.blogspot.com" onclick="window.open(this.href);return false">Track (Blog)</a></li>
  </ul></li>
 </ul>
 </div>
@@ -62,10 +69,56 @@
 
 <div id="blackarea" onclick="display('none')"></div>
 
-<div id="about">
+<svg width="400" height="300" viewBox="0 0 400 300" id="splash">
+  <style type="text/css"><![CDATA[
+    text{font-family:Trebuchet MS, sans-serif}
+    .svgbutton:hover{cursor:pointer}
+    .svgbutton:hover rect{fill:#eee}
+  ]]></style>
+  <rect x="0.5" y="0.5" width="399" height="299" fill="#fff" stroke="#0c9" />
+  <text x="30" y="100" font-size="48" fill="#0c9">&lt;Vanade /&gt;</text>
+  <text x="80" y="130" font-size="16" fill="#999">The XHTML Web Editor Online</text>
+  <path d="M0 300L400 280 V300z" fill="#0c9" opacity="0.1" />
+  <path d="M50 300L400 260 V300z" fill="#0c9" opacity="0.1" />
+  <path d="M100 300L400 240 V300z" fill="#0c9" opacity="0.1" />
+  <path d="M150 300L400 220 V300z" fill="#0c9" opacity="0.1" />
+  <path d="M200 300L400 200 V300z" fill="#0c9" opacity="0.1" />
+  <path d="M250 300L400 180 V300z" fill="#0c9" opacity="0.1" />
+  <path d="M300 300L400 160 V300z" fill="#0c9" opacity="0.1" />
+  <path d="M350 300L400 140 V300z" fill="#0c9" opacity="0.1" />
+  <text x="358" y="296" font-size="12" fill="#999">V 0.4.1</text>
+  <g id="hiddeng" style="display:none">
+    <g transform="translate(40 180) rotate(-0)" class="svgbutton" onclick="display('newfile')">
+      <rect x="0.5" y="0.5" rx="4" width="79" height="79" fill="#fff" stroke="#ccc" />
+      <text x="30" y="76" font-size="11" fill="#69c">New</text>
+      <path d="M20 10V60H60V20H50V10z" fill="#fff" stroke="#69c" stroke-width="2" />
+    </g>
+    <g transform="translate(160 180) rotate(-0)" class="svgbutton" onclick="display('openfile')">
+      <rect x="0.5" y="0.5" rx="4" width="79" height="79" fill="#fff" stroke="#ccc" />
+      <text x="26" y="76" font-size="11" fill="#6c9">Open</text>
+      <path d="M20 10V60H60V20H50V10z" fill="#fff" stroke="#6c9" stroke-width="2" />
+      <path d="M40 55L45 40H50L40 25L30 40H35z" fill="#6c9" stroke-width="2" />
+    </g>
+    <g transform="translate(280 180) rotate(-0)" class="svgbutton" onclick="display('templates')">
+      <rect x="0.5" y="0.5" rx="4" width="79" height="79" fill="#fff" stroke="#ccc" />
+      <text x="16" y="76" font-size="11" fill="#c69">Templates</text>
+      <path d="M20 10V60H60V20H50V10z" fill="#fff" stroke="#c69" stroke-width="2" />
+      <path d="M30 25V55H40V35H50V25z" fill="#c69" stroke-width="2" />
+    </g>
+  </g>
+</svg>
+
+<div id="infobox">
 <h2>About</h2>
-<p>Vanade (From vanadium, the chemical element with atomic number 23), is a project to make the first XHTML web editor online. The goal is to make a lightweight stable application that helps webdevelopers to make their webpages, always aviable from anywhere, without having to install anything into their computers.</p>
-<p>Feel free to collaborate with the proyect. Contact the project developer at buzon&#64;ayotli.com</p>
+<p>Vanade (From vanadium, the chemical element with atomic number 23), is a project to make the first XHTML web editor online. The goal is to make a lightweight stable application that helps webdevelopers to make their webpages, always available from anywhere, without having to install any software into their computers.</p>
+<p>Feel free to collaborate with the proyect. Contact the project developer at webmaster&#64;vanade.net</p>
+<h3>Compatibility</h3>
+<ul>
+<li>Google Chrome 10</li>
+<li>Firefox 4</li>
+<li>Internet Explorer 9</li>
+<li>Internet Explorer 6-8 with <a href="http://www.google.com/chromeframe/" onclick="window.open(this.href);return false">Google Chrome Frame</a></li>
+</ul>
 </div>
 
 <div id="todo">
@@ -74,24 +127,31 @@
 <ul>
 <li>Real-time XHTML code editor: <strong>100%</strong></li>
 <li>Save files into the computer: <strong>100%</strong></li>
-<li>Syntax coloring: <strong>10%</strong></li>
+<li>Syntax coloring: <strong>Using CodeMirror</strong></li>
+<li>Multiple file edition support: <strong>100%</strong></li>
+<li>FTP support: <strong>10%</strong></li>
 <li>Multilanguage support: <strong>0%</strong></li>
-<li>Show options when writing "<": <strong>0%</strong></li>
-<li>Show attributes when writing " " inside a tag: <strong>0%</strong></li>
-<li>Show obligatory attributes at the begining of the list with bold: <strong>0%</strong></li>
+<li>Show options when writing [<]: <strong>0%</strong></li>
+<li>Show attributes when writing [ ] inside a tag: <strong>0%</strong></li>
+<li>Show required attributes at the begining of the list with bold: <strong>0%</strong></li>
 </ul>
 
 <h3>Phase 2 (Secondary)</h3>
 <ul>
-<li>Open local files from the computer: <strong>0%</strong></li>
+<li>Open local files from the computer: <strong>100%</strong></li>
 <li>Interact with local files inside the same folder: <strong>0%</strong></li>
-<li>CSS editor and syntax coloring: <strong>0%</strong></li>
+<li>CSS editor and syntax coloring: <strong>50%</strong></li>
 </ul>
 
 <h3>Phase 3 (Minor importanse)</h3>
 <ul>
-<li>Insert menu acording file type: <strong>0%</strong></li>
-<li>Real-time SVG code editor: <strong>0%</strong></li>
+<li>Insert menu acording file type: <strong>20%</strong></li>
+<li>Real-time SVG code editor: <strong>50%</strong></li>
+</ul>
+
+<h2>Bugs</h2>
+<ul>
+<li>Local files can't interact with elements in folder.</li>
 </ul>
 </div>
 
